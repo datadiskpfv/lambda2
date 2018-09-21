@@ -40,6 +40,18 @@ public class Main_Lambda_2 {
         Predicate<Employee> predicateLessThanAndEqual30 = employee -> employee.getAge() <= 30;
         printEmployeesByAge(employees, "Employees 30 and under", predicateLessThanAndEqual30);
 
+        Predicate<Employee> predicateGreaterThan80 = employee -> employee.getAge() > 80;
+        printEmployeesByAge(employees, "Employees greater than 80", predicateGreaterThan80);
+
+        System.out.println("Using predicate chaining");
+        System.out.println("=========================================");
+        for(Employee employee : employees){
+            if(predicateGreaterThan80.or(predicateLessThanAndEqual30).test(employee)){
+                System.out.println(employee.getName() + " " + employee.getAge());
+            }
+        }
+        System.out.println("=========================================");
+
         // Function are good for call backs
         Function<Employee, String> getLastName = (employee) -> {
             return employee.getName().substring(employee.getName().indexOf(' ') + 1);
