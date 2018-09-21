@@ -34,9 +34,14 @@ public class Main_Lambda_1 {
         // Use a Lambda to sort a Collection
         Collections.sort(employees, (employee1, employee2) -> employee1.getName().compareTo(employee2.getName()));
 
-        for(Employee emp : employees){
-            System.out.println(emp.getName());
-        }
+//        for(Employee emp : employees){
+//            System.out.println(emp.getName());
+//        }
+
+        employees.forEach( employee -> {
+            System.out.println(employee.getName());
+            System.out.println(employee.getAge());
+        });
 
         // String sillyString = doStringStuff(new UpperConcat() {
 //            @Override
@@ -57,32 +62,6 @@ public class Main_Lambda_1 {
         // The uc is the Lambda expression
         // the upperAndConcat is from the interface
         return uc.upperAndConcat(s1, s2);
-    }
-}
-
-class Employee {
-    private String name;
-    private int age;
-
-    public Employee(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 }
 
